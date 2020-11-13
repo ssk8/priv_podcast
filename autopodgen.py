@@ -3,8 +3,8 @@ from mutagen.mp3 import MP3
 from datetime import timedelta
 import os
 
-host_address = "http://192.168.1.115:8000/"
-base_dir = "/home/curt/priv_podcast"
+host_address = "http://192.168.1.136:8000/"
+base_dir = "/home/pi/priv_podcast"
 pod_dir ="assets"
 
 def find_pods():
