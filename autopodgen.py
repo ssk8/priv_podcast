@@ -1,5 +1,6 @@
 from podgen import Podcast, Episode, Media
 from mutagen.mp3 import MP3
+from mutagen.easyid3 import EasyID3
 from datetime import timedelta
 import os
 
@@ -24,11 +25,11 @@ p = Podcast(
 p.image = host_address + "logo.jpg"
 
 for pod in find_pods():
-    audio = MP3(os.path.join(base_dir, pod_dir, pod))
-    title = pod[:-4].replace("_", " ")
+    audio = MP3(os.path.join(base_dir, pod_dir, pod), ID3=EasyID3)
+    title = audio["title"]
     size = os.path.getsize(os.path.join(base_dir, pod_dir, pod))
     duration = timedelta(seconds=audio.info.length)
-    print(f'{pod}, {size}, {duration}')
+    print(f'{pod}, {title}, {size}, {duration}')
     p.episodes += [Episode(title=title, media=Media(f"{host_address}{pod}", size=size, duration=duration), summary="summary goes here")]
 
 rss = p.rss_str()
