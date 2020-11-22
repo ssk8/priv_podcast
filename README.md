@@ -1,6 +1,6 @@
 # priv_podcast
 
-host private podcasts on local server
+host private podcasts on local server. I'm using it to get mp3s into AntennaPod
 
 clone repo, make a directory "assets" and add a logo.jpg and mp3 files.
 
