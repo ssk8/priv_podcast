@@ -26,7 +26,10 @@ p.image = host_address + "logo.jpg"
 
 for pod in find_pods():
     audio = MP3(os.path.join(base_dir, pod_dir, pod), ID3=EasyID3)
-    title = str(*audio["title"])
+    if audio:
+        title = str(*audio["title"])
+    else:
+        title = pod[:~3]
     size = os.path.getsize(os.path.join(base_dir, pod_dir, pod))
     duration = timedelta(seconds=audio.info.length)
     print(f'{pod}, {title}, {size}, {duration}')
